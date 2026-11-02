@@ -1,0 +1,298 @@
+{
+  "info": {
+    "name": "Ejercicio 2 - API de Proveedores",
+    "description": "Pruebas de operaciones, validaciones y API Key del ejercicio de proveedores.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8082"
+    },
+    {
+      "key": "apiKey",
+      "value": "clave-proveedores-local"
+    },
+    {
+      "key": "proveedorId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Crear proveedor (201)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Responde 201 Created', function () { pm.response.to.have.status(201); });",
+              "if (pm.response.code === 201) pm.collectionVariables.set('proveedorId', pm.response.json().id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-KEY",
+            "value": "{{apiKey}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Ana\",\n  \"apellido\": \"López\",\n  \"correo\": \"ana@example.com\",\n  \"categoria\": \"Limpieza\",\n  \"estado\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/api/proveedores"
+      }
+    },
+    {
+      "name": "Listar proveedores (200)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Responde 200 OK', function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-KEY",
+            "value": "{{apiKey}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/proveedores"
+      }
+    },
+    {
+      "name": "Filtrar categoría (200)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Responde 200 OK', function () { pm.response.to.have.status(200); });",
+              "pm.test('Todos pertenecen a Limpieza', function () { pm.response.json().forEach(p => pm.expect(p.categoria.toLowerCase()).to.eql('limpieza')); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-KEY",
+            "value": "{{apiKey}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/proveedores?categoria=Limpieza"
+      }
+    },
+    {
+      "name": "Obtener por ID existente (200)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Responde 200 OK', function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-KEY",
+            "value": "{{apiKey}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/proveedores/{{proveedorId}}"
+      }
+    },
+    {
+      "name": "Obtener ID inexistente (404)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Responde 404 Not Found', function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-KEY",
+            "value": "{{apiKey}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/proveedores/999999"
+      }
+    },
+    {
+      "name": "Validación de campos vacíos (400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Responde 400 Bad Request', function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-KEY",
+            "value": "{{apiKey}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"\",\n  \"apellido\": \"\",\n  \"correo\": \"ana@example.com\",\n  \"categoria\": \"Limpieza\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/api/proveedores"
+      }
+    },
+    {
+      "name": "Validación de correo inválido (400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Responde 400 Bad Request', function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-KEY",
+            "value": "{{apiKey}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Ana\",\n  \"apellido\": \"López\",\n  \"correo\": \"correo-invalido\",\n  \"categoria\": \"Limpieza\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/api/proveedores"
+      }
+    },
+    {
+      "name": "API Key correcta (200)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Responde 200 OK con API Key correcta', function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-KEY",
+            "value": "{{apiKey}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/proveedores",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "proveedores"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sin API Key (401)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Responde 401 Unauthorized', function () { pm.response.to.have.status(401); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/proveedores"
+      }
+    },
+    {
+      "name": "API Key incorrecta (401)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Responde 401 Unauthorized', function () { pm.response.to.have.status(401); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-KEY",
+            "value": "clave-incorrecta"
+          }
+        ],
+        "url": "{{baseUrl}}/api/proveedores"
+      }
+    }
+  ]
+}

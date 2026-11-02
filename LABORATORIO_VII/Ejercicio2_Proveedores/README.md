@@ -7,9 +7,9 @@ API REST independiente desarrollada con Java 17 y Spring Boot. Los proveedores s
 - Java 17 o superior
 - Maven 3.6 o superior
 
-Desde esta carpeta, ejecutar `mvn spring-boot:run`. La API queda en `http://localhost:8080`.
+Desde esta carpeta, ejecutar `mvn spring-boot:run`. La API queda en `http://localhost:8082`.
 
-La clave local de demostración es `clave-proveedores-local`. Para configurar otra sin guardarla en el repositorio, definir la variable de entorno `PROVEEDORES_API_KEY` antes de iniciar.
+La clave local de demostración es `clave-proveedores-local`. Para configurar otra sin guardarla en el repositorio, definir la variable de entorno `API_KEY` antes de iniciar.
 
 ## Seguridad
 
@@ -40,4 +40,4 @@ Nombre, apellido, correo y categoría son obligatorios; el correo debe tener for
 
 ## Pruebas y Postman
 
-Ejecutar las pruebas unitarias con `mvn test`. Importar `pruebapostamjercicio2.json` en Postman. La colección usa la clave local predeterminada y cubre creación, consultas, filtro, validación, ID inexistente y accesos sin clave/con clave incorrecta.
+Ejecutar las pruebas unitarias con `mvn test`. Importar `pruebapostmanejercicio2.json` en Postman. La colección usa la clave local predeterminada y cubre creación, consultas, filtro, validación, ID inexistente y accesos sin clave/con clave incorrecta.

@@ -7,9 +7,9 @@ API REST independiente desarrollada con Java 17 y Spring Boot. Los empleados se 
 - Java 17 o superior
 - Maven 3.6 o superior
 
-Desde esta carpeta, iniciar con `mvn spring-boot:run`. La API queda en `http://localhost:8080`.
+Desde esta carpeta, iniciar con `mvn spring-boot:run`. La API queda en `http://localhost:8083`.
 
-La clave local de demostración es `clave-empleados-local`. Para usar una clave propia, definir la variable de entorno `EMPLEADOS_API_KEY` antes de iniciar.
+La clave local de demostración es `clave-empleados-local`. Para usar una clave propia, definir la variable de entorno `API_KEY` antes de iniciar.
 
 ## Seguridad
 
@@ -40,4 +40,4 @@ Nombre, apellido, correo y especialidad son obligatorios. El correo debe tener f
 
 ## Pruebas y Postman
 
-Ejecutar las pruebas unitarias con `mvn test`. Importar `pruebapostamjercicio3.json` en Postman. La colección cubre creación, consultas, filtro, validación, ID inexistente y accesos sin clave o con clave incorrecta.
+Ejecutar las pruebas unitarias con `mvn test`. Importar `pruebapostmanejercicio3.json` en Postman. La colección cubre creación, consultas, filtro, validación, ID inexistente y accesos sin clave o con clave incorrecta.
