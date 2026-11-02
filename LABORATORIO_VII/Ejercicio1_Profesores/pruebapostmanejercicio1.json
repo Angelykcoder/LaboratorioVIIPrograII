@@ -56,7 +56,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"nombre\": \"Ana\",\n  \"apellido\": \"López\",\n  \"correo\": \"ana@correo.com\",\n  \"especialidad\": \"Matemática\",\n  \"estado\": \"ACTIVO\"\n}"
+          "raw": "{\n  \"nombre\": \"Ana\",\n  \"apellido\": \"López\",\n  \"correo\": \"ana@correo.com\",\n  \"especialidad\": \"Matemática\",\n  \"estado\": true\n}"
         }
       }
     },
@@ -97,7 +97,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"nombre\": \"Luis\",\n  \"apellido\": \"Pérez\",\n  \"correo\": \"luis@correo.com\",\n  \"especialidad\": \"Física\",\n  \"estado\": \"ACTIVO\"\n}"
+          "raw": "{\n  \"nombre\": \"Luis\",\n  \"apellido\": \"Pérez\",\n  \"correo\": \"luis@correo.com\",\n  \"especialidad\": \"Física\",\n  \"estado\": true\n}"
         }
       }
     },
@@ -279,7 +279,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"nombre\": \"\",\n  \"apellido\": \"López\",\n  \"correo\": \"ana@correo.com\",\n  \"especialidad\": \"Matemática\",\n  \"estado\": \"ACTIVO\"\n}"
+          "raw": "{\n  \"nombre\": \"\",\n  \"apellido\": \"López\",\n  \"correo\": \"ana@correo.com\",\n  \"especialidad\": \"Matemática\",\n  \"estado\": true\n}"
         }
       }
     },
@@ -320,7 +320,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"nombre\": \"Ana\",\n  \"apellido\": \"\",\n  \"correo\": \"ana@correo.com\",\n  \"especialidad\": \"Matemática\",\n  \"estado\": \"ACTIVO\"\n}"
+          "raw": "{\n  \"nombre\": \"Ana\",\n  \"apellido\": \"\",\n  \"correo\": \"ana@correo.com\",\n  \"especialidad\": \"Matemática\",\n  \"estado\": true\n}"
         }
       }
     },
@@ -361,7 +361,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"nombre\": \"Ana\",\n  \"apellido\": \"López\",\n  \"correo\": \"no-es-un-correo\",\n  \"especialidad\": \"Matemática\",\n  \"estado\": \"ACTIVO\"\n}"
+          "raw": "{\n  \"nombre\": \"Ana\",\n  \"apellido\": \"López\",\n  \"correo\": \"no-es-un-correo\",\n  \"especialidad\": \"Matemática\",\n  \"estado\": true\n}"
         }
       }
     },

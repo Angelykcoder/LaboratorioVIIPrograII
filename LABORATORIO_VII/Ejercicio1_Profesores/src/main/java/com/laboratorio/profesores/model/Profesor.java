@@ -17,14 +17,15 @@ public class Profesor {
     @Email(message = "El correo no tiene un formato válido")
     private String correo;
 
+    @NotBlank(message = "La especialidad no puede estar vacía")
     private String especialidad;
 
-    private String estado;
+    private boolean estado = true;
 
     public Profesor() {
     }
 
-    public Profesor(Long id, String nombre, String apellido, String correo, String especialidad, String estado) {
+    public Profesor(Long id, String nombre, String apellido, String correo, String especialidad, boolean estado) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -73,11 +74,11 @@ public class Profesor {
         this.especialidad = especialidad;
     }
 
-    public String getEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 }

@@ -10,8 +10,6 @@ import java.util.List;
 @Service
 public class ProfesorService {
 
-    private static final String ESTADO_POR_DEFECTO = "ACTIVO";
-
     private final ProfesorRepository repository;
 
     public ProfesorService(ProfesorRepository repository) {
@@ -19,9 +17,7 @@ public class ProfesorService {
     }
 
     public Profesor crear(Profesor profesor) {
-        if (profesor.getEstado() == null || profesor.getEstado().isBlank()) {
-            profesor.setEstado(ESTADO_POR_DEFECTO);
-        }
+        profesor.setId(null);
         return repository.guardar(profesor);
     }
 

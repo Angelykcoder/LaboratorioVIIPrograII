@@ -44,13 +44,13 @@ mvn spring-boot:run
   "apellido": "López",
   "correo": "ana@correo.com",
   "especialidad": "Matemática",
-  "estado": "ACTIVO"
+  "estado": true
 }
 ```
 
-- `nombre`, `apellido`: obligatorios (no vacíos).
+- `nombre`, `apellido`, `especialidad`: obligatorios (no vacíos).
 - `correo`: obligatorio y con formato válido.
-- `estado`: opcional; por defecto `ACTIVO`.
+- `estado`: booleano opcional; por defecto `true`.
 - El filtro por especialidad no distingue mayúsculas de minúsculas.
 
 ## Estructura

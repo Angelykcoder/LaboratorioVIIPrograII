@@ -14,6 +14,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -29,7 +30,7 @@ class ProfesorServiceTest {
 
     @Test
     void crearProfesorCorrectamente() {
-        Profesor nuevo = new Profesor(null, "Ana", "López", "ana@correo.com", "Matemática", null);
+        Profesor nuevo = new Profesor(null, "Ana", "López", "ana@correo.com", "Matemática", true);
         when(repository.guardar(any(Profesor.class))).thenAnswer(inv -> {
             Profesor p = inv.getArgument(0);
             p.setId(1L);
@@ -40,13 +41,13 @@ class ProfesorServiceTest {
 
         assertEquals(1L, creado.getId());
         assertEquals("Ana", creado.getNombre());
-        assertEquals("ACTIVO", creado.getEstado());
+        assertTrue(creado.isEstado());
         verify(repository).guardar(nuevo);
     }
 
     @Test
     void obtenerProfesorExistente() {
-        Profesor existente = new Profesor(1L, "Ana", "López", "ana@correo.com", "Matemática", "ACTIVO");
+        Profesor existente = new Profesor(1L, "Ana", "López", "ana@correo.com", "Matemática", true);
         when(repository.buscarPorId(1L)).thenReturn(Optional.of(existente));
 
         Profesor resultado = service.obtenerPorId(1L);

@@ -42,7 +42,7 @@ class ProfesorApiTest {
         mockMvc.perform(post("/api/profesores").header(HEADER, CLAVE)
                         .contentType(MediaType.APPLICATION_JSON).content(JSON_VALIDO))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.estado").value("ACTIVO"));
+                .andExpect(jsonPath("$.estado").value(true));
     }
 
     @Test
